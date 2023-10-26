@@ -1,16 +1,16 @@
 package com.furkansemizoglu.newsapp2.views
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.furkansemizoglu.newsapp2.adapter.NewsItemAdapter
 import com.furkansemizoglu.newsapp2.databinding.FragmentNewsListBinding
-import com.furkansemizoglu.newsapp2.databinding.FragmentNewsListItemBinding
-import com.furkansemizoglu.newsapp2.model.Weather
 import com.furkansemizoglu.newsapp2.viewmodel.MainViewModel
 
 
@@ -18,16 +18,12 @@ class NewsList : Fragment() {
 
     private lateinit var binding: FragmentNewsListBinding
     private lateinit var viewModel : MainViewModel
+    private  var newsItemAdapter =  NewsItemAdapter(arrayListOf())
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FragmentNewsListBinding.inflate(layoutInflater)
-
-
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-
-
     }
 
     override fun onCreateView(
@@ -41,19 +37,67 @@ class NewsList : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val Weathers = ArrayList<Weather>()
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        Weathers.add(Weather("Ali"))
-        Weathers.add(Weather("Cem"))
+        adapterConnector()
+
+        viewModel.getDataFromApi()
+
+        observeLiveData()
+
+    }
+
+
+    private fun adapterConnector(){
+
         val recyclerView = binding.recyclerView
 
         recyclerView.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
 
-        val adapter = NewsItemAdapter(Weathers)
-
-        recyclerView.adapter = adapter
-
-
+        recyclerView.adapter = newsItemAdapter
     }
+
+
+    private fun observeLiveData(){
+        Log.w("okay1","ok")
+        viewModel.newsData.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                Log.w("okay2","ok")
+                newsItemAdapter.updateNewsList(it)
+            }
+        })
+
+
+        viewModel.newsError.observe(viewLifecycleOwner, Observer {
+            if (it){
+                binding.recyclerView.visibility = View.GONE
+                binding.errorTextView.visibility = View.VISIBLE
+                binding.progressBar.visibility = View.GONE
+            }
+            else{
+                binding.recyclerView.visibility = View.VISIBLE
+                binding.errorTextView.visibility = View.GONE
+                binding.progressBar.visibility = View.GONE
+            }
+
+        })
+
+
+        viewModel.newsLoading.observe(viewLifecycleOwner, Observer {
+            if(it){
+                binding.recyclerView.visibility = View.GONE
+                binding.errorTextView.visibility = View.GONE
+                binding.progressBar.visibility = View.VISIBLE
+            }
+            else{
+                binding.recyclerView.visibility = View.VISIBLE
+                binding.errorTextView.visibility = View.GONE
+                binding.progressBar.visibility = View.GONE
+            }
+        })
+    }
+
+
+
 
 }

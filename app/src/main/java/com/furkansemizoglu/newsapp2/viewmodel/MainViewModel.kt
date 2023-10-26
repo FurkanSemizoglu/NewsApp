@@ -1,6 +1,8 @@
 package com.furkansemizoglu.newsapp2.viewmodel
 
+import android.app.Application
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.furkansemizoglu.newsapp2.model.NewsModel
@@ -26,21 +28,28 @@ class MainViewModel : ViewModel() {
 
 
     fun getDataFromApi(){
-
+        Log.w("getdata","tis okay")
         newsLoading.value = true
 
         disposable.add(
             newsApiService.getData()
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<List<NewsModel>>(){
                     override fun onSuccess(t: List<NewsModel>) {
+                        Log.w("listcheckcontorl","tis okay")
                        newsLoading.value = false
                        newsError.value = false
                        newsData.value = t
+
+                        val myList : List<NewsModel>
+                        myList = t
+                        Log.w("listcheck",myList[1].articles[1].title)
                     }
 
                     override fun onError(e: Throwable) {
+                        Log.e("refreshPictureOfDay", Log.getStackTraceString(e))
+                        Log.w("listcheckme",e.printStackTrace().toString())
                         newsLoading.value = false
                         newsError.value = true
                         e.printStackTrace()
@@ -52,6 +61,10 @@ class MainViewModel : ViewModel() {
     }
 
 
+    override fun onCleared() {
+        super.onCleared()
+        disposable.clear()
+    }
 
 }
 
