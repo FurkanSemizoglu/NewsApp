@@ -1,21 +1,17 @@
 package com.furkansemizoglu.newsapp2.viewmodel
 
-import android.app.Application
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.furkansemizoglu.newsapp2.model.NewsModel
+import com.furkansemizoglu.newsapp2.model.NewsModelItem
 import com.furkansemizoglu.newsapp2.service.NewsAPIService
-import io.reactivex.disposables.Disposable
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.observers.DisposableSingleObserver
 import io.reactivex.rxjava3.schedulers.Schedulers
-import java.lang.Exception
 
 class MainViewModel : ViewModel() {
-    val newsData = MutableLiveData<NewsModel>()
+    val newsData = MutableLiveData<List<NewsModelItem>>()
 
     val newsApiService = NewsAPIService()
 
@@ -35,15 +31,14 @@ class MainViewModel : ViewModel() {
             newsApiService.getData()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSingleObserver<NewsModel>(){
-                    override fun onSuccess(t: NewsModel) {
+                .subscribeWith(object : DisposableSingleObserver<List<NewsModelItem>>(){
+                    override fun onSuccess(t: List<NewsModelItem>) {
                         Log.w("listcheckcontorl","tis okay")
                        newsLoading.value = false
                        newsError.value = false
                        newsData.value = t
 
-                        val myList : NewsModel
-                        myList = t
+
 
                     }
 

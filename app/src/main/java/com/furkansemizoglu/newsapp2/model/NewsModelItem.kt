@@ -1,6 +1,6 @@
 package com.furkansemizoglu.newsapp2.model
 
-data class Article(
+data class NewsModelItem(
     val author: String,
     val content: String,
     val description: String,

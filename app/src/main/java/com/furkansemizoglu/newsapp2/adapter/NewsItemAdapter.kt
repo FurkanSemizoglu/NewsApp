@@ -6,9 +6,9 @@ import com.furkansemizoglu.newsapp2.databinding.FragmentNewsListItemBinding
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.furkansemizoglu.newsapp2.model.NewsModel
+import com.furkansemizoglu.newsapp2.model.NewsModelItem
 
-class NewsItemAdapter ( val newsList : ArrayList<NewsModel>) :    RecyclerView.Adapter<NewsItemAdapter.WeatherViewHolder>() {
+class NewsItemAdapter ( val newsList : ArrayList<NewsModelItem>) :    RecyclerView.Adapter<NewsItemAdapter.WeatherViewHolder>() {
 
     class WeatherViewHolder(val binding : FragmentNewsListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -26,13 +26,13 @@ class NewsItemAdapter ( val newsList : ArrayList<NewsModel>) :    RecyclerView.A
 
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
 
-        holder.binding.newsStory.text =  newsList[position].articles[position].title
+        holder.binding.newsStory.text =  newsList[position].title.toString()
     }
 
 
-    fun updateNewsList(newCountryList : ArrayList<NewsModel>){
+    fun updateNewsList(newNewsList : List<NewsModelItem>){
         newsList.clear()
-        newsList.addAll(newCountryList)
+        newsList.addAll(newNewsList)
         notifyDataSetChanged()
     }
 
