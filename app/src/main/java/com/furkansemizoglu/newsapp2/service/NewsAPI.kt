@@ -16,5 +16,5 @@ https://newsapi.org/v2/everything?q=Apple&from=2023-10-18&sortBy=popularity&apiK
 
  */
     @GET("v2/everything?q=Apple&from=2023-10-18&sortBy=popularity&apiKey=11d436cf76d6450691909c47bc194ea0")
-    fun getNewsData() : Single<List<NewsModel>>
+    fun getNewsData() : Single<NewsModel>
 }

@@ -15,7 +15,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import java.lang.Exception
 
 class MainViewModel : ViewModel() {
-    val newsData = MutableLiveData<List<NewsModel>>()
+    val newsData = MutableLiveData<NewsModel>()
 
     val newsApiService = NewsAPIService()
 
@@ -35,16 +35,16 @@ class MainViewModel : ViewModel() {
             newsApiService.getData()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSingleObserver<List<NewsModel>>(){
-                    override fun onSuccess(t: List<NewsModel>) {
+                .subscribeWith(object : DisposableSingleObserver<NewsModel>(){
+                    override fun onSuccess(t: NewsModel) {
                         Log.w("listcheckcontorl","tis okay")
                        newsLoading.value = false
                        newsError.value = false
                        newsData.value = t
 
-                        val myList : List<NewsModel>
+                        val myList : NewsModel
                         myList = t
-                        Log.w("listcheck",myList[1].articles[1].title)
+
                     }
 
                     override fun onError(e: Throwable) {

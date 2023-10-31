@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.furkansemizoglu.newsapp2.adapter.NewsItemAdapter
 import com.furkansemizoglu.newsapp2.databinding.FragmentNewsListBinding
+import com.furkansemizoglu.newsapp2.model.NewsModel
 import com.furkansemizoglu.newsapp2.viewmodel.MainViewModel
 
 
@@ -19,6 +20,7 @@ class NewsList : Fragment() {
     private lateinit var binding: FragmentNewsListBinding
     private lateinit var viewModel : MainViewModel
     private  var newsItemAdapter =  NewsItemAdapter(arrayListOf())
+    private lateinit var apiResultsList: ArrayList<NewsModel>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,9 +63,21 @@ class NewsList : Fragment() {
     private fun observeLiveData(){
         Log.w("okay1","ok")
         viewModel.newsData.observe(viewLifecycleOwner, Observer {
+          //  var number = apiResultsList.size
+          //  Log.w("okaymı1" ,Integer.toString(number) )
             it?.let {
-                Log.w("okay2","ok")
-                newsItemAdapter.updateNewsList(it)
+
+                /*
+                Log.w("okaymı1" ,apiResultsList.size.toString() )
+
+                 */
+                for (i in  0..it.articles.size){
+                   apiResultsList.add(it)
+                }
+                /*
+                Log.w("okaymı2" ,apiResultsList.size.toString() )
+                */
+                newsItemAdapter.updateNewsList(apiResultsList)
             }
         })
 

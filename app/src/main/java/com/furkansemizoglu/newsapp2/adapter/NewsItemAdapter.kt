@@ -30,7 +30,7 @@ class NewsItemAdapter ( val newsList : ArrayList<NewsModel>) :    RecyclerView.A
     }
 
 
-    fun updateNewsList(newCountryList : List<NewsModel>){
+    fun updateNewsList(newCountryList : ArrayList<NewsModel>){
         newsList.clear()
         newsList.addAll(newCountryList)
         notifyDataSetChanged()

@@ -18,7 +18,7 @@ class NewsAPIService {
 
 
 
-    fun getData() : Single<List<NewsModel>> {
+    fun getData() : Single<NewsModel> {
         return api.getNewsData()
     }
 }
