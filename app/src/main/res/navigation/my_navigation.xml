@@ -10,17 +10,21 @@
         android:name="com.furkansemizoglu.newsapp2.views.NewsList"
         android:label="fragment_news_list"
         tools:layout="@layout/fragment_news_list" >
+
         <action
             android:id="@+id/action_newsList_to_itemDetail"
-            app:destination="@id/itemDetail" />
+            app:destination="@id/itemDetail"
+            />
     </fragment>
     <fragment
         android:id="@+id/itemDetail"
         android:name="com.furkansemizoglu.newsapp2.views.ItemDetail"
         android:label="fragment_item_deatail"
         tools:layout="@layout/fragment_item_detail" >
-        <action
-            android:id="@+id/action_itemDetail_to_newsList"
-            app:destination="@id/newsList" />
+
+        <argument
+            android:name="position"
+            app:argType="integer"
+             />
     </fragment>
 </navigation>

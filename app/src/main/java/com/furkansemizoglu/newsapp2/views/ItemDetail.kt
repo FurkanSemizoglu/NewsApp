@@ -24,5 +24,15 @@ class ItemDetail : Fragment() {
         return inflater.inflate(R.layout.fragment_item_detail, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val args = ItemDetailArgs.fromBundle(requireArguments())
+        val position = args.position
+
+
+
+    }
+
 
 }
