@@ -24,6 +24,7 @@
 
 
         <LinearLayout
+            android:id="@+id/newsPicture"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginLeft="20dp"

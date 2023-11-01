@@ -25,8 +25,9 @@ class NewsItemAdapter ( val newsList : ArrayList<NewsModelItem>) :    RecyclerVi
     }
 
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
+        holder.binding.newsStory.text =  newsList[position].content
+        holder.binding.newsTitle.text = newsList[position].title
 
-        holder.binding.newsStory.text =  newsList[position].title.toString()
     }
 
 

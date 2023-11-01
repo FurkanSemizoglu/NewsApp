@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.furkansemizoglu.newsapp2.adapter.NewsItemAdapter
 import com.furkansemizoglu.newsapp2.databinding.FragmentNewsListBinding
 import com.furkansemizoglu.newsapp2.viewmodel.MainViewModel
@@ -42,9 +43,24 @@ class NewsList : Fragment() {
 
         adapterConnector()
 
+        binding.swipeRefreshLayout.setOnRefreshListener {
+
+            binding.recyclerView.visibility = View.GONE
+            binding.progressBar.visibility =View.VISIBLE
+            binding.errorTextView.visibility = View.GONE
+            binding.swipeRefreshLayout.isRefreshing = false
+
+            viewModel.getDataFromApi()
+
+            observeLiveData()
+
+        }
+
         viewModel.getDataFromApi()
 
         observeLiveData()
+
+
 
     }
 
@@ -62,8 +78,7 @@ class NewsList : Fragment() {
     private fun observeLiveData(){
         Log.w("okay1","ok")
         viewModel.newsData.observe(viewLifecycleOwner, Observer {
-          //  var number = apiResultsList.size
-          //  Log.w("okaymı1" ,Integer.toString(number) )
+
             it?.let {
 
                 binding.recyclerView.visibility = View.VISIBLE
