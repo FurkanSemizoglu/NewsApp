@@ -23,9 +23,12 @@
         tools:layout="@layout/fragment_item_detail" >
 
         <argument
-            android:name="bundle"
+            android:name="bundlee"
             app:argType="android.os.Bundle"
              />
+        <action
+            android:id="@+id/action_itemDetail_to_newsList"
+            app:destination="@id/newsList" />
 
 
     </fragment>

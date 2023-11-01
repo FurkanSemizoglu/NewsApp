@@ -28,6 +28,8 @@ class NewsItemAdapter ( val newsList: ArrayList<NewsModelItem> ) :    RecyclerVi
         return  newsList.size
     }
     private val bundlee = Bundle()
+
+    private val myBundle = Bundle()
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
         holder.binding.newsStory.text =  newsList[position].content
         holder.binding.newsTitle.text = newsList[position].title
@@ -36,8 +38,6 @@ class NewsItemAdapter ( val newsList: ArrayList<NewsModelItem> ) :    RecyclerVi
 
      //   bundle.putInt("itemPosition",position)
 
-        bundlee.putString("itemTitle" , newsList[position].title)
-        bundlee.putString("itemContent" , newsList[position].content)
 
 
 
@@ -52,7 +52,10 @@ class NewsItemAdapter ( val newsList: ArrayList<NewsModelItem> ) :    RecyclerVi
 
         holder.itemView.setOnClickListener {
 
+            bundlee.putString("itemTitle" , newsList[position].title)
+            bundlee.putString("itemContent" , newsList[position].content)
 
+            holder.itemView
             val action = NewsListDirections.actionNewsListToItemDetail(bundlee)
 
 

@@ -6,14 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.furkansemizoglu.newsapp2.R
+import com.furkansemizoglu.newsapp2.databinding.FragmentItemDetailBinding
 
 
 class ItemDetail : Fragment() {
 
 
+    private lateinit var binding: FragmentItemDetailBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        binding = FragmentItemDetailBinding.inflate(layoutInflater)
     }
 
     override fun onCreateView(
@@ -21,7 +24,7 @@ class ItemDetail : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_item_detail, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,8 +32,14 @@ class ItemDetail : Fragment() {
 
         val args = ItemDetailArgs.fromBundle(requireArguments())
 
+        val detailTitleTextView = args.bundlee.getString("itemTitle")
+
+        val descriptionTextView  = args.bundlee.getString("itemContent")
 
 
+        binding.detailTitleTextView.text = detailTitleTextView
+
+        binding.descriptionTextView.text = descriptionTextView
 
 
     }
