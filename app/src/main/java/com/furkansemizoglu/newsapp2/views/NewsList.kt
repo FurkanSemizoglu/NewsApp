@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.furkansemizoglu.newsapp2.adapter.NewsItemAdapter
 import com.furkansemizoglu.newsapp2.databinding.FragmentNewsListBinding
+import com.furkansemizoglu.newsapp2.model.NewsModelItem
 import com.furkansemizoglu.newsapp2.viewmodel.MainViewModel
 
 
@@ -20,6 +21,8 @@ class NewsList : Fragment() {
     private lateinit var binding: FragmentNewsListBinding
     private lateinit var viewModel : MainViewModel
     private  var newsItemAdapter =  NewsItemAdapter(arrayListOf())
+
+    //var newsList = ArrayList<NewsModelItem>()
   //  private lateinit var apiResultsList: ArrayList<NewsModel>
 
 

@@ -1,0 +1,35 @@
+[33mcommit fbad0a7a1bdc6346ba103ecc2a9a158ecc4a1b6b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Furkan <furkan5590@hotmail.com>
+Date:   Wed Nov 1 16:48:35 2023 +0300
+
+    receiving data from the fragment
+
+[33mcommit 9d5ee1c3b0bbd0a987da7d93d8776a636d485df6[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Furkan <furkan5590@hotmail.com>
+Date:   Wed Nov 1 15:30:20 2023 +0300
+
+    detail item view created
+
+[33mcommit 4d4b9568c840192e5fdee1dc35c42e1fc7e22aca[m
+Author: Furkan <furkan5590@hotmail.com>
+Date:   Tue Oct 31 14:54:39 2023 +0300
+
+    json file had changed
+
+[33mcommit 76750b948a27c30dba45bd7b6267fc30cd01a3fc[m
+Author: Furkan <furkan5590@hotmail.com>
+Date:   Tue Oct 31 14:22:38 2023 +0300
+
+    json file is changing
+
+[33mcommit 1d7feb73ec4be47cbf4a47a6b5c81c5beda4132f[m
+Author: Furkan <furkan5590@hotmail.com>
+Date:   Thu Oct 26 23:14:20 2023 +0300
+
+    fetching data is not over
+
+[33mcommit 2235961c45a26c7c02c782be00f633972ea792f1[m
+Author: Furkan <furkan5590@hotmail.com>
+Date:   Thu Oct 26 19:42:51 2023 +0300
+
+    first commit

@@ -12,7 +12,7 @@ import com.furkansemizoglu.newsapp2.model.NewsModelItem
 import com.furkansemizoglu.newsapp2.views.NewsListDirections
 
 
-class NewsItemAdapter ( val newsList : ArrayList<NewsModelItem>) :    RecyclerView.Adapter<NewsItemAdapter.WeatherViewHolder>() {
+class NewsItemAdapter ( val newsList: ArrayList<NewsModelItem> ) :    RecyclerView.Adapter<NewsItemAdapter.WeatherViewHolder>() {
 
     class WeatherViewHolder(val binding : FragmentNewsListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -27,17 +27,20 @@ class NewsItemAdapter ( val newsList : ArrayList<NewsModelItem>) :    RecyclerVi
     override fun getItemCount(): Int {
         return  newsList.size
     }
-
+    private val bundlee = Bundle()
     override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
         holder.binding.newsStory.text =  newsList[position].content
         holder.binding.newsTitle.text = newsList[position].title
 
-        /*
-        val bundle = Bundle()
-        bundle.putInt("itemPosition",position)
 
 
-         */
+     //   bundle.putInt("itemPosition",position)
+
+        bundlee.putString("itemTitle" , newsList[position].title)
+        bundlee.putString("itemContent" , newsList[position].content)
+
+
+
 
 
         /*
@@ -50,7 +53,8 @@ class NewsItemAdapter ( val newsList : ArrayList<NewsModelItem>) :    RecyclerVi
         holder.itemView.setOnClickListener {
 
 
-            val action = NewsListDirections.actionNewsListToItemDetail( position)
+            val action = NewsListDirections.actionNewsListToItemDetail(bundlee)
+
 
             Navigation.findNavController(it).navigate(action )
 

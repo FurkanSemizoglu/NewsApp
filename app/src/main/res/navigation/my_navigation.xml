@@ -23,8 +23,10 @@
         tools:layout="@layout/fragment_item_detail" >
 
         <argument
-            android:name="position"
-            app:argType="integer"
+            android:name="bundle"
+            app:argType="android.os.Bundle"
              />
+
+
     </fragment>
 </navigation>

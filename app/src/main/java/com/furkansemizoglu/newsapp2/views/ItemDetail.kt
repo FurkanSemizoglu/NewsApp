@@ -28,7 +28,8 @@ class ItemDetail : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val args = ItemDetailArgs.fromBundle(requireArguments())
-        val position = args.position
+
+
 
 
 
