@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace 'com.furkansemizoglu.newsapp2'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.furkansemizoglu.newsapp2"
@@ -65,5 +65,10 @@ dependencies {
 
 
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01'
+
+    def room_version = "2.6.0"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
 
 }
