@@ -59,7 +59,7 @@ class NewsList : Fragment() {
 
         }
 
-        viewModel.getDataFromApi()
+        viewModel.refreshData()
 
         observeLiveData()
 

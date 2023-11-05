@@ -14,25 +14,25 @@ interface NewsDAO {
 
 
     @Query("SELECT * FROM News")
-    fun getNews() : List<NewsModelItem>
+    suspend fun getNews() : List<NewsModelItem>
 
 
 
 
     @Query("SELECT * FROM News WHERE title LIKE :title")
-    fun findByTitle(title: String) : NewsModelItem
+    suspend fun findByTitle(title: String) : NewsModelItem
 
 
 
     @Insert
-    fun insertAll(vararg news: NewsModelItem )
+    suspend fun insertAll(vararg news: NewsModelItem ) : List<Long>
 
     @Delete
-    fun delete(news: NewsModelItem)
+    suspend fun delete(news: NewsModelItem)
 
     @Query("DELETE FROM News")
-    fun deleteAllCountries ()
+    suspend fun deleteAllCountries ()
 
     @Update
-    fun updateTodo(vararg news: NewsModelItem)
+    suspend fun updateTodo(vararg news: NewsModelItem)
 }
