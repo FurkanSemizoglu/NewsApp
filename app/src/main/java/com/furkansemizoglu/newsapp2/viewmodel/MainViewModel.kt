@@ -34,7 +34,7 @@ class MainViewModel(application : Application) : AndroidViewModel(application) {
 
     private var customPreferences = CustomSharedPreferences(getApplication())
 
-    private var refreshTime = 1 * 60 * 1000 * 1000 * 1000L
+    private var refreshTime = 10 * 60 * 1000 * 1000 * 1000L
 
     fun refreshData(){
 
@@ -72,10 +72,13 @@ class MainViewModel(application : Application) : AndroidViewModel(application) {
                 list[i].id = allList[i].toInt()
                 i += 1
             }
+
+            showNews(list)
         }
 
 
-        showNews(list)
+
+        customPreferences.saveTime(System.nanoTime())
     }
 
     fun getDataFromApi(){
