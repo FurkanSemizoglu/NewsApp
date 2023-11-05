@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 @Entity("News")
 data class NewsModelItem(
     @PrimaryKey(autoGenerate = true)
-    var id  : Int,
+    public var id  : Int,
 
     @ColumnInfo("author")
     val author: String,
@@ -18,8 +18,6 @@ data class NewsModelItem(
     val description: String,
     @ColumnInfo("publishedAt")
     val publishedAt: String,
-    @ColumnInfo("source")
-    @Embedded val source: Source,
     @ColumnInfo("title")
     val title: String,
     @ColumnInfo("url")

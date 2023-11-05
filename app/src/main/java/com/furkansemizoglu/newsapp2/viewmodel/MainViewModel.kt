@@ -25,15 +25,16 @@ class MainViewModel(application : Application) : AndroidViewModel(application) {
 
     val disposable  = CompositeDisposable()
 
-
     val db = NewsDatabase(getApplication()).newsDao()
 
-    val db2 = NewsDatabase.invoke(getApplication())
+
+
 
 
     fun getDataFromApi(){
         Log.w("getdata","tis okay")
         newsLoading.value = true
+
 
         disposable.add(
             newsApiService.getData()
