@@ -18,20 +18,10 @@
         android:background="#B5C3CD"
         android:orientation="horizontal"
         android:textAlignment="center"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-
-        <LinearLayout
-            android:id="@+id/newsPicture"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/ic_launcher_background">
-
-        </LinearLayout>
 
 
         <LinearLayout
@@ -50,6 +40,7 @@
 
                 <TextView
                     android:id="@+id/newsTitle"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="The News Title"
